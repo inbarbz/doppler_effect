@@ -2,7 +2,7 @@
 
 ## Doppler Math
 
-![alt text](doppler_mathpng)
+![alt text](doppler_math.png)
 
 ## Running the Simulation
 
