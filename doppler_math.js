@@ -8,10 +8,10 @@
 
 */
 
-const trainDistanceMeters = 1000;
+const trainDistanceMeters = 300;
 const trainSpeedKmPerHour = 60; // set this ????
 const trainSpeedMetersPerSecond = (trainSpeedKmPerHour * 1000) / 3600;
-const observerDistanceMeters = 100;
+const observerDistanceMeters = 50;
 
 let currentTrainDistanceMeters = 1000;
 let currentTimeInSeconds = 0;
@@ -33,7 +33,9 @@ function calculateTrainVelocity(t) {
   let trainSpeedTowardTheObserverMetersPerSecond =
     trainSpeedMetersPerSecond / Math.cos(alpha);
   console.log(
-    `calculateTrainVelocity(${t}) = ${trainSpeedTowardTheObserverMetersPerSecond}`
+    `calculateTrainVelocity(${t}) alpha=${alpha} Math.cos(alpha)=${Math.cos(
+      alpha
+    )} speed=${trainSpeedTowardTheObserverMetersPerSecond}`
   );
   return trainSpeedTowardTheObserverMetersPerSecond;
 }
