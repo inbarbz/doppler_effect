@@ -21,4 +21,10 @@ function advanceSimulation(byTime) {
   let frequencyFactor = calculateDopplerFrequencyChangeFactor(currentTime);
   setFrequencyFactor(frequencyFactor);
   setVolumeFactor(volumeFactor);
+
+  if (currentTime > getTotalSimulationTime()) {
+    console.log("***** RESTART SIMULATION *****");
+    stopSimulation();
+    startSimulation();
+  }
 }

@@ -9,12 +9,19 @@
 */
 
 const trainDistanceMeters = 300;
-const trainSpeedKmPerHour = 60; // set this ????
+const trainSpeedKmPerHour = 90; // set this ????
 const trainSpeedMetersPerSecond = (trainSpeedKmPerHour * 1000) / 3600;
 const observerDistanceMeters = 50;
 
-let currentTrainDistanceMeters = 1000;
+let currentTrainDistanceMeters = trainDistanceMeters;
 let currentTimeInSeconds = 0;
+
+let trainSimulationTime = (trainDistanceMeters * 2) / trainSpeedMetersPerSecond;
+console.log("**** Simulation Time = " + trainSimulationTime + " seconds ****");
+
+function getTotalSimulationTime() {
+  return trainSimulationTime;
+}
 
 // calculate the train distance at time t
 function calculateTrainDistance(t) {
