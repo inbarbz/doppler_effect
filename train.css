@@ -137,8 +137,13 @@ ul {
   width: 100%;
   z-index: 1;
 }
+
+.train_animation {
+    animation: move-train 24s linear infinite;*/
+}
+
 .train {
-  animation: move-train 24s linear infinite;
+  /*animation: move-train 24s linear infinite;*/
   bottom: 12.6rem;
   height: 10rem;
   position: absolute;
