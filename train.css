@@ -41,7 +41,7 @@ ul {
 }
 
 .center {
-    // Sky
+    /*Sky*/
     background: #000c18;
     background: -webkit-linear-gradient(#013971, #000c18 60%);
     background: -moz-linear-gradient(#013971, #000c18 60%);
@@ -59,7 +59,7 @@ ul {
     }
 
     &::before {
-        // Moon
+        /*Moon*/
         background: rgba(255, 250, 175, 0.8);
         border-radius: 50%;
         box-shadow: 0 0 3rem 0 rgba(255, 250, 175, 0.5);
@@ -70,7 +70,7 @@ ul {
     }
 
     &::after {
-        // Stars
+        /*Starts*/
         background: -moz-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
         background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
         background: -o-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
