@@ -31,7 +31,7 @@ function calculateTrainVelocity(t) {
 
   // let cosAlpha = Math.cos(alpha) = trainSpeedMetersPerSecond / trainSpeedTowardTheObserverMetersPerSecond;
   let trainSpeedTowardTheObserverMetersPerSecond =
-    trainSpeedMetersPerSecond / Math.cos(alpha);
+    trainSpeedMetersPerSecond * Math.cos(alpha);
   console.log(
     `calculateTrainVelocity(${t}) alpha=${alpha} Math.cos(alpha)=${Math.cos(
       alpha
