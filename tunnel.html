@@ -1,0 +1,56 @@
+<script>
+    function createTrainTunnelEffect(audioUrl) {
+        // create audio context
+        const audioCtx = new AudioContext();
+
+        // load audio file
+        const audioRequest = new XMLHttpRequest();
+        audioRequest.open('GET', audioUrl, true);
+        audioRequest.responseType = 'arraybuffer';
+        audioRequest.onload = function () {
+            audioCtx.decodeAudioData(audioRequest.response, function (decodedData) {
+                // create audio source
+                const source = audioCtx.createBufferSource();
+                source.buffer = decodedData;
+
+                // create tunnel filter
+                const tunnelFilter = audioCtx.createConvolver();
+                const tunnelUrl = 'tunnel-impulse-response.wav';
+                const tunnelRequest = new XMLHttpRequest();
+                tunnelRequest.open('GET', tunnelUrl, true);
+                tunnelRequest.responseType = 'arraybuffer';
+                tunnelRequest.onload = function () {
+                    audioCtx.decodeAudioData(tunnelRequest.response, function (decodedTunnel) {
+                        tunnelFilter.buffer = decodedTunnel;
+
+                        // create EQ filter
+                        const eqFilter = audioCtx.createBiquadFilter();
+                        eqFilter.type = 'lowshelf';
+                        eqFilter.frequency.value = 500;
+                        eqFilter.gain.value = 6;
+
+                        // create compressor filter
+                        const compressor = audioCtx.createDynamicsCompressor();
+                        compressor.threshold.value = -30;
+                        compressor.knee.value = 10;
+                        compressor.ratio.value = 12;
+                        compressor.attack.value = 0;
+                        compressor.release.value = 0.25;
+
+                        // connect audio nodes
+                        source.connect(tunnelFilter);
+                        tunnelFilter.connect(eqFilter);
+                        eqFilter.connect(compressor);
+                        compressor.connect(audioCtx.destination);
+
+                        // start audio
+                        source.start();
+                    });
+                };
+                tunnelRequest.send();
+            });
+        };
+        audioRequest.send();
+    }
+    createTrainTunnelEffect('hungarian-train-ride-59446.mp3')
+</script>

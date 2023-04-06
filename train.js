@@ -16,14 +16,41 @@ let audioBufferSource_announcement = null;
 let audioGain = null;
 let audioGainValue = 0.7;
 
-function playAudioFileFromBuffer(sample) {
+function playAudioFileFromBuffer(sample, tunnel) {
   console.log("playAudioFile()");
   const source = audioCtx.createBufferSource();
   audioGain = audioCtx.createGain();
   source.buffer = sample;
 
-  source.connect(audioGain);
-  audioGain.connect(audioCtx.destination);
+  if (tunnel) {
+    const tunnelFilter = audioCtx.createConvolver();
+    tunnelFilter.buffer = sample;
+    console.log(
+      "IN TUNNEL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    );
+    // create EQ filter
+    const eqFilter = audioCtx.createBiquadFilter();
+    eqFilter.type = "lowshelf";
+    eqFilter.frequency.value = 500;
+    eqFilter.gain.value = 6;
+
+    // create compressor filter
+    const compressor = audioCtx.createDynamicsCompressor();
+    compressor.threshold.value = -30;
+    compressor.knee.value = 10;
+    compressor.ratio.value = 12;
+    compressor.attack.value = 0;
+    compressor.release.value = 0.25;
+
+    source.connect(tunnelFilter);
+    tunnelFilter.connect(audioGain);
+    audioGain.connect(eqFilter);
+    eqFilter.connect(compressor);
+    compressor.connect(audioCtx.destination);
+  } else {
+    source.connect(audioGain);
+    audioGain.connect(audioCtx.destination);
+  }
   audioGain.gain.setValueAtTime(audioGainValue, audioCtx.currentTime);
   source.start(0);
 
@@ -31,9 +58,14 @@ function playAudioFileFromBuffer(sample) {
 }
 
 function stopPlayback() {
-  if (audioBufferSource_train != null) audioBufferSource_train.stop();
+  if (audioBufferSource_train != null) {
+    audioBufferSource_train.stop();
+    audioBufferSource_train.disconnect();
+  }
   if (audioBufferSource_announcement != null)
     audioBufferSource_announcement.stop();
+
+  audioGain.gain.setValueAtTime(0.00000001, audioCtx.currentTime);
 }
 
 function setFrequencyFactor(factor) {
@@ -51,10 +83,10 @@ function setVolumeFactor(factor) {
 // };
 
 // "hungarian-train-ride-59446.mp3" is a sample audio file
-function playAudioFileFromURL(url) {
+function playAudioFileFromURL(url, tunnel) {
   loadSample(url).then((sample) => {
     console.log("playAudioFile() sample: " + sample);
-    audioBufferSource_train = playAudioFileFromBuffer(sample);
+    audioBufferSource_train = playAudioFileFromBuffer(sample, tunnel);
     console.log("playAudioFile() source: " + audioBufferSource_train);
   });
 }
@@ -62,7 +94,7 @@ function playAudioFileFromURL(url) {
 function playAudioFileFromURL_annoucement(url) {
   loadSample(url).then((sample) => {
     console.log("playAudioFileFromURL_annoucement() sample: " + sample);
-    audioBufferSource_announcement = playAudioFileFromBuffer(sample);
+    audioBufferSource_announcement = playAudioFileFromBuffer(sample, false);
     console.log(
       "playAudioFileFromURL_annoucement() source: " +
         audioBufferSource_announcement
