@@ -22,9 +22,10 @@ function advanceSimulation(byTime) {
   setFrequencyFactor(frequencyFactor);
   setVolumeFactor(volumeFactor);
 
-  if (currentTime > getTotalSimulationTime()) {
-    console.log("***** RESTART SIMULATION *****");
+  if (currentTime > getTotalSimulationTime() - 2) {
+    console.log("***** STOP SIMULATION *****");
     stopSimulation();
-    startSimulation();
+    stopPlayback();
+    stopTrainAnimation();
   }
 }

@@ -17,17 +17,25 @@ $("#french_train_id").on("click", function () {
 
 running_simulation = false;
 
+function stopTrainAnimation() {
+  $("#train_div_id").removeClass("train_animation");
+}
+
+let tunnel_timer = null;
+
 $("#start_simulation_id").on("click", function () {
   console.log("running simulation: WITH TUNNEL!!!");
   running_simulation = true;
+  if (tunnel_timer != null) clearTimeout(tunnel_timer);
+  stopPlayback();
   playAudioFileFromURL(selected_train_audio_file, true);
 
-  setTimeout(function () {
+  tunnel_timer = setTimeout(function () {
     console.log("running simulation: NO TUNNEL!!!");
 
     stopPlayback();
-    playAudioFileFromURL(selected_train_audio_file, false);
     startSimulation();
+    playAudioFileFromURL(selected_train_audio_file, false);
     // start the CSS annimation of the train
     $("#train_div_id").addClass("train_animation");
   }, 3000);
@@ -38,7 +46,7 @@ $("#stop_simulation_id").on("click", function () {
   stopPlayback();
   stopSimulation();
   // stop the CSS annimation of the train
-  $("#train_div_id").removeClass("train_animation");
+  stopTrainAnimation();
 });
 
 $("#bell_1_id").on("click", function () {

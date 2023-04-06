@@ -65,7 +65,8 @@ function stopPlayback() {
   if (audioBufferSource_announcement != null)
     audioBufferSource_announcement.stop();
 
-  audioGain.gain.setValueAtTime(0.00000001, audioCtx.currentTime);
+  if (audioGain != null)
+    audioGain.gain.setValueAtTime(0.00000001, audioCtx.currentTime);
 }
 
 function setFrequencyFactor(factor) {
