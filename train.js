@@ -11,7 +11,8 @@ function loadSample(url) {
     });
 }
 
-let audioBufferSource = null;
+let audioBufferSource_train = null;
+let audioBufferSource_announcement = null;
 let audioGain = null;
 let audioGainValue = 0.7;
 
@@ -20,6 +21,7 @@ function playAudioFileFromBuffer(sample) {
   const source = audioCtx.createBufferSource();
   audioGain = audioCtx.createGain();
   source.buffer = sample;
+
   source.connect(audioGain);
   audioGain.connect(audioCtx.destination);
   audioGain.gain.setValueAtTime(audioGainValue, audioCtx.currentTime);
@@ -29,12 +31,14 @@ function playAudioFileFromBuffer(sample) {
 }
 
 function stopPlayback() {
-  audioBufferSource.stop();
+  if (audioBufferSource_train != null) audioBufferSource_train.stop();
+  if (audioBufferSource_announcement != null)
+    audioBufferSource_announcement.stop();
 }
 
 function setFrequencyFactor(factor) {
   console.log("setFrequencyFactor(" + factor + ")");
-  audioBufferSource.playbackRate.value = factor;
+  audioBufferSource_train.playbackRate.value = factor;
 }
 
 function setVolumeFactor(factor) {
@@ -50,7 +54,18 @@ function setVolumeFactor(factor) {
 function playAudioFileFromURL(url) {
   loadSample(url).then((sample) => {
     console.log("playAudioFile() sample: " + sample);
-    audioBufferSource = playAudioFileFromBuffer(sample);
-    console.log("playAudioFile() source: " + audioBufferSource);
+    audioBufferSource_train = playAudioFileFromBuffer(sample);
+    console.log("playAudioFile() source: " + audioBufferSource_train);
+  });
+}
+
+function playAudioFileFromURL_annoucement(url) {
+  loadSample(url).then((sample) => {
+    console.log("playAudioFileFromURL_annoucement() sample: " + sample);
+    audioBufferSource_announcement = playAudioFileFromBuffer(sample);
+    console.log(
+      "playAudioFileFromURL_annoucement() source: " +
+        audioBufferSource_announcement
+    );
   });
 }

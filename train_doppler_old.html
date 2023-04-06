@@ -24,15 +24,8 @@
 
   <button type="button" class="btn btn-success" id="start_simulation_id"
     style="margin-left: 5px;margin-bottom: 5px;">Start!</button>
-    <button type="button" class="btn btn-danger" id="stop_simulation_id"
+  <button type="button" class="btn btn-danger" id="stop_simulation_id"
     style="margin-left: 5px;margin-bottom: 5px;">Stop!</button>
-
-    <button type="button" class="btn btn-warning" id="bell_1_id"
-    style="margin-left: 5px;margin-bottom: 5px;">Bell 1!</button>
-    <button type="button" class="btn btn-warning" id="bell_2_id"
-    style="margin-left: 5px;margin-bottom: 5px;">Bell 2!</button>
-    <button type="button" class="btn btn-warning" id="mind_the_gap_id"
-    style="margin-left: 5px;margin-bottom: 5px;">Mind The Gap!</button>
 
 
   <br />
@@ -88,6 +81,15 @@
     </div>
   </div>
 
+
+  <br />
+  <br />
+
+  <input type='button' value='Strike' id='Strike'>
+  <p>Duration</p>
+  <input type='range' min=0.2 max=4 value=1 step='any' id='Duration'>
+  <p>Pitch</p>
+  <input type='range' min=0 max=4 value=1 step='any' id='Pitch'>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -106,9 +108,8 @@
 
 <script src="https://unpkg.com/konva@8/konva.min.js"></script>
 
-<script src='train.js'></script>
-<script src='Bells.js'></script>
 <script src='train_doppler_ui.js'></script>
+<script src='train.js'></script>
 <script src='doppler_math.js'></script>
 <script src='simulation.js'></script>
 

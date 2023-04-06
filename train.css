@@ -35,6 +35,7 @@ ul {
 }
 .center {
   /*Sky*/
+  z-index:10;
   background: #000c18;
   background: -webkit-linear-gradient(#013971, #000c18 60%);
   background: -moz-linear-gradient(#013971, #000c18 60%);
@@ -51,6 +52,7 @@ ul {
 }
 .center::before {
   /*Moon*/
+  z-index:10;
   background: rgba(255, 250, 175, 0.8);
   border-radius: 50%;
   box-shadow: 0 0 3rem 0 rgba(255, 250, 175, 0.5);
@@ -61,6 +63,7 @@ ul {
 }
 .center::after {
   /*Starts*/
+  z-index:11;
   background: -moz-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: -o-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
@@ -101,7 +104,6 @@ ul {
   width: 80%;
 }
 .frame {
-  z-index: 1;
   height: 100vh;
   left: 50%;
   position: absolute;
@@ -111,34 +113,31 @@ ul {
   z-index: 1;
 }
 .frame::before, .frame::after {
-  z-index: 1;
+  z-index: 5;
   background: black;
   background: -webkit-linear-gradient(#333, black 20%);
   background: -moz-linear-gradient(#333, black 20%);
   background: -o-linear-gradient(#333, black 20%);
   background: -ms-linear-gradient(#333, black 20%);
   background: linear-gradient(#333, black 20%);
-  bottom: 12.6rem;
+  bottom: 22.6rem;
   content: "";
   height: 20rem;
   position: absolute;
   width: 100%;
-  z-index: 2;
 }
 .frame::before {
-  z-index: 1;
   border-radius: 0 1rem 0 0;
   border-right: 0.5rem solid black;
   left: -100%;
 }
 .frame::after {
-  z-index: 1;
   border-left: 0.5rem solid black;
   border-radius: 1rem 0 0 0;
   right: -100%;
 }
 .bridge {
-  z-index: 2;
+  z-index: 10;
   border-bottom: 0.3rem solid white;
   border-top: 0.3rem solid white;
   background: black;
@@ -161,7 +160,7 @@ ul {
 .train {
   z-index: 3;
   /*animation: move-train 24s linear infinite;*/
-  bottom: 12.6rem;
+  bottom: 24.6rem;
   height: 10rem;
   position: absolute;
   left: calc(100% + 1.3rem);
