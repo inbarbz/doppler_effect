@@ -59,18 +59,21 @@ ul {
   height: 16rem;
   left: 20%;
   top: -4rem;
-  width: 16rem;
+  width: 16rem;  
 }
 .center::after {
   /*Starts*/
-  z-index:11;
   background: -moz-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: -o-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: -ms-radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 5%) left/14rem 15rem, radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 3%) left/10rem 9rem;
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 30%;
+
+  z-index:10;
+  left: 25%;
+  top: 1rem;
 }
 .mountains {
   z-index: 1;
