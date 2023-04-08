@@ -48,11 +48,7 @@ function calculateTrainVelocity(t) {
 }
 
 // calculate the doppler frequency at time t
-// f' = f ( v + v_r ) / ( v + v_s )
-// f'/f = 343 / ( 343 + v_s )
-// v_r = observer velocity (which is 0)
-// v_s = train velocity
-// v is the speed of sound waves in the medium (343 m/s in air)
+
 function calculateDopplerFrequencyChangeFactor(t) {
   let trainVelocity = calculateTrainVelocity(t);
   let dopplerFrequencyChangeFactor = 343 / (343 + trainVelocity);
@@ -78,3 +74,4 @@ function perceivedAudioVolumeChangeFactor(t) {
 
   return volumeChangeFactorNow;
 }
+
