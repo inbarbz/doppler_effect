@@ -1,5 +1,6 @@
 // Create an AudioContext object
 const audioCtx = new AudioContext();
+let lastNode = null;
 
 function loadSample(url) {
   console.log("loadSample() " + url);
@@ -47,9 +48,11 @@ function playAudioFileFromBuffer(sample, tunnel) {
     audioGain.connect(eqFilter);
     eqFilter.connect(compressor);
     compressor.connect(audioCtx.destination);
+    lastNode = compressor;
   } else {
     source.connect(audioGain);
     audioGain.connect(audioCtx.destination);
+    lastNode = audioGain;
   }
   audioGain.gain.setValueAtTime(audioGainValue, audioCtx.currentTime);
   source.start(0);
@@ -79,11 +82,6 @@ function setVolumeFactor(factor) {
   audioGain.gain.setValueAtTime(audioGainValue * factor, audioCtx.currentTime);
 }
 
-// PlaybackSpeed.oninput = () => {
-//   source.playbackRate.value = PlaybackSpeed.value;
-// };
-
-// "hungarian-train-ride-59446.mp3" is a sample audio file
 function playAudioFileFromURL(url, tunnel) {
   loadSample(url).then((sample) => {
     console.log("playAudioFile() sample: " + sample);
