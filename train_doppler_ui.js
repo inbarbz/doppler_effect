@@ -63,6 +63,6 @@ $("#bell_2_id").on("click", function () {
 
 $("#mind_the_gap_id").on("click", function () {
   if (running_simulation) {
-    playAudioFileFromURL_annoucement("Mind the Gap London Underground.mp3");
+    playAudioFileFromURL_annoucement("horn.mp3");
   }
 });
