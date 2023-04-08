@@ -29,7 +29,7 @@ ul {
 .observers {
   position: relative;
   text-align: center;
-  margin-top: 350;
+  margin-top: 28%;
   vertical-align: text-bottom;
   z-index:10;
 }
@@ -149,7 +149,7 @@ ul {
   background: -o-linear-gradient(55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem, -o-linear-gradient(-55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem;
   background: -ms-linear-gradient(55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem, -ms-linear-gradient(-55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem;
   background: linear-gradient(55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem, linear-gradient(-55deg, transparent 46%, white 46%, white 54%, transparent 54%) left/1.6rem 2.2rem;
-  bottom: 10rem;
+  top: 80%;
   height: 2.6rem;
   position: absolute;
   width: 100%;
@@ -163,7 +163,7 @@ ul {
 .train {
   z-index: 3;
   /*animation: move-train 24s linear infinite;*/
-  bottom: 24.6rem;
+  top: 62%;
   height: 10rem;
   position: absolute;
   left: calc(100% + 1.3rem);

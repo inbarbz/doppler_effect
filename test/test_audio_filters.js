@@ -67,3 +67,20 @@ $("#test_doppler_frequency_affect").on("click", function () {
     stopPlayback();
   }, 10000);
 });
+
+$("#test_bell_1").on("click", function () {
+  console.log("test_bell_1()");
+  audioGain = audioCtx.createGain();
+  audioGain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+  recorder = new Recorder(audioGain);
+  recorder.record();
+  playBell(0.3, 2.0);
+  setTimeout(function () {
+    console.log("test_bell_1() stopping..");
+    recorder.stop();
+    recorder.exportWAV(
+      (blob) =>
+        (document.querySelector("audio").src = URL.createObjectURL(blob))
+    );
+  }, 5000);
+});
