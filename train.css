@@ -116,25 +116,27 @@ ul {
   z-index: 1;
 }
 .frame::before, .frame::after {
-  z-index: 5;
+  z-index: 20;
   background: black;
   background: -webkit-linear-gradient(#333, black 20%);
   background: -moz-linear-gradient(#333, black 20%);
   background: -o-linear-gradient(#333, black 20%);
   background: -ms-linear-gradient(#333, black 20%);
   background: linear-gradient(#333, black 20%);
-  bottom: 22.6rem;
+  top: 55%;
   content: "";
   height: 20rem;
   position: absolute;
   width: 100%;
 }
 .frame::before {
+  z-index: 20;
   border-radius: 0 1rem 0 0;
   border-right: 0.5rem solid black;
   left: -100%;
 }
 .frame::after {
+  z-index: 20;
   border-left: 0.5rem solid black;
   border-radius: 1rem 0 0 0;
   right: -100%;
