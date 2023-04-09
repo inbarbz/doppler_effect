@@ -29,7 +29,7 @@ ul {
 .observers {
   position: relative;
   text-align: center;
-  margin-top: 28%;
+  top: 60%;
   vertical-align: text-bottom;
   z-index:10;
 }
